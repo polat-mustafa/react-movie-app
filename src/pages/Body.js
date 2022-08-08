@@ -1,20 +1,18 @@
-const Body = ({data}) => {
+import React from "react";
 
-  console.log(data);
+const Body = ({ movies }) => {
   return (
     <div>
-      {
-        data.map(movie => (
-          <div key={movie.id}>
+      {movies.map((movie, index) => {
+        return (
+          <div key={index}>
             <h1>{movie.title}</h1>
             <p>{movie.description}</p>
-            <img src={movie.image} alt={movie.title} />
           </div>
-        ))
-
-      }
+        );
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default Body
+export default Body;
