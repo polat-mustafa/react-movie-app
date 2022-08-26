@@ -9,6 +9,8 @@ import Footer from "./pages/Footer";
 import { useQuery } from "@tanstack/react-query";
 import { getMovies } from "./api/index";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Movies from "./components/Movies";
+import MoviesDetail from "./components/MoviesDetail";
 
 function App() {
   // Queries
@@ -23,12 +25,18 @@ function App() {
   }
 
   return (
-    <div>
-      <Header />
-      <Body movies={data.items} />
-      <Footer />
+    <>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Body movies={data.items} />} />
+          <Route path="/movie" element={<Movies movies={data.items} />} />
+          <Route path="/movie/:id" element={<MoviesDetail movies={data.items} />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
       <ReactQueryDevtools />
-    </div>
+    </>
   );
 }
 

@@ -1,4 +1,6 @@
 import React from "react";
+import Movies from "../components/Movies";
+import { Link } from "react-router-dom";
 
 const Body = ({ movies }) => {
   return (
@@ -6,8 +8,9 @@ const Body = ({ movies }) => {
       {movies.map((movie, index) => {
         return (
           <div key={index}>
-            <h1>{movie.title}</h1>
-            <p>{movie.description}</p>
+            <Link to={`/movie/${movie.id}`}>
+            <Movies movie={movie} />
+            </Link>
           </div>
         );
       })}
